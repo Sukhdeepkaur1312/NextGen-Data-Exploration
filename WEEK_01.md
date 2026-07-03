@@ -88,3 +88,29 @@ The laboratory session centered on executing a complete data pipeline workflow, 
 * **Multivariate Correlation Diagnostics:** Computed mathematical correlation coefficient tables exclusively for numeric attributes using `.corr()`. Piped these values into a customized annotated matrix heatmap (`sns.heatmap`) using a continuous divergent color spectrum to isolate directional dependencies between metrics (such as mapping structural connections between Age, Semester depth, CGPA, and Attendance scores).
 
 ---
+## Day 4: Advanced Exploratory Data Analysis (EDA), Statistical Profiling, and Boolean Feature Engineering
+**Date:** 3 July 2026
+
+### Technical Overview
+The session was dedicated to extracting deeper statistical insights from a larger population matrix (500 instances, 15 variables) using Pandas. The analysis scaled from structural uniqueness validation to multi-variable aggregation matrices, cross-tabulations, directional correlation mapping, and targeted cohort extraction via multi-conditional boolean masking. The session concluded with programmatic feature generation based on composite logic thresholds.
+
+### Technical Competencies Acquired
+
+#### 1. Categorical Inconsistency Auditing and Structural Profiling
+* **Dimensional Verification:** Loaded and mapped a 500-row student registry tracking 15 distinct metadata features to verify data dimensions.
+* **Cardinality and Structural Integrity Diagnostics:** Utilized `.unique()`, `.nunique()`, and `.value_counts()` metrics across structural elements (such as "Department", "City", and "Gender") to expose data-entry issues (e.g., lowercase versus uppercase string splits like 'CSE' vs 'cse', 'Male' vs 'male', and 'Placed' vs 'placed').
+
+#### 2. Univariate, Bivariate, and Multivariate Statistical Aggregations
+* **Central Tendency Profiling:** Evaluated central distributions across numerical factors using continuous scalar methods (`.mean()`, `.median()`, `.mode()`, `.min()`, and `.max()`) to establish demographic baselines.
+* **Stratified Group Aggregations:** Applied advanced `.groupby()` operators to generate cross-sectional performance analyses, tracking variables across single and multiple metrics simultaneously (e.g., isolating average study hours, attendance ratios, and performance metrics across specific department subsets).
+* **Cross-Tabulation Frequency Matrices:** Deployed `pd.crosstab()` functions to construct contingency tables mapping nominal attribute intersections, isolating placement status frequency distributions directly across academic department boundaries.
+
+#### 3. Data Sorting, Outlier Detection, and Strategic Masking
+* **Extreme Value Diagnostics:** Executed targeted dataset sorts using `.sort_values()` and isolated positional outliers (such as an anomalous maximum score of 15.0) along with unmapped missing elements (NaN rows) across specific behavioral columns.
+* **Boolean Cohort Extraction:** Constructed precise boolean logic masks to query specific subsets of data based on performance and demographic markers (e.g., isolating high-performing cohorts via condition checks like `df[df["CGPA"] > 9]` and parsing localized or residential subsets).
+
+#### 4. Conditional Feature Engineering
+* **Vectorized Feature Derivation:** Formulated new indicator variables out of existing raw matrices by defining explicit boolean assignment conditions.
+* **Composite Logic Layering:** Built layered multi-conditional masks combining disparate performance attributes (e.g., combining academic performance limits with behavioral attendance ratios) to dynamically label qualified cohorts under a newly engineered indicator feature column.
+
+---
