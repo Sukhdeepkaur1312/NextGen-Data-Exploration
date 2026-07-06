@@ -114,3 +114,35 @@ The session was dedicated to extracting deeper statistical insights from a large
 * **Composite Logic Layering:** Built layered multi-conditional masks combining disparate performance attributes (e.g., combining academic performance limits with behavioral attendance ratios) to dynamically label qualified cohorts under a newly engineered indicator feature column.
 
 ---
+## Day 5: Core Data Visualization, Statistical Distributions, and Relationship Mapping
+**Date:** 6 July 2026
+
+### Technical Overview
+The session was dedicated to exploring data visualization fundamentals using Matplotlib and Seaborn within Google Colab. The analysis scaled from initial structural data cleaning to univariate distribution plotting, categorical counts, aggregated multivariate comparison matrices, trend mapping, and continuous variable relationship tracking via correlation coefficients, multi-variable pair plots, and area charts.
+
+### Technical Competencies Acquired
+
+#### 1. Library Framework Comparison and Structural Preprocessing
+* **Tool Selection Matrix:** Contrasted Matplotlib (a highly customizable basic library for simple charts) with Seaborn (built on Matplotlib, offering attractive default styles and better integration with Pandas for statistical plots).
+* **Environment Maintenance:** Integrated Google Drive storage paths, stripped structural duplicate entries via `.drop_duplicates()`, and unified nominal case formats using string vectorization mapping functions (`.str.title()` and `.str.upper()`).
+* **Targeted Outlier Filtering:** Applied boolean indexing to drop invalid anomalies identified during distribution checks, filtering out impossible academic scores by subsetting values within realistic boundaries: `df = df[(df["CGPA"] >= 0) & (df["CGPA"] <= 10)]`.
+
+#### 2. Univariate Distribution & Outlier Diagnostics
+* **Frequency Distribution Histograms:** Leveraged `plt.hist()` to split performance and behavioral boundaries into 10 explicit value intervals (bins), identifying structural patterns and anomalous data spikes (such as CGPA entries reaching up to 15.0 and attendance stretching to 150%).
+* **Kernel Density Estimation (KDE):** Implemented continuous density probability estimation overlays via `sns.histplot(kde=True)` to trace the exact numerical concentration layout of behavioral traits like student study hours.
+* **Five-Number Statistical Summary Boxplots:** Employed `sns.boxplot()` to visually partition quantitative factors across explicit quartile thresholds (Minimum, Q1, Median, Q3, Maximum) while isolating independent structural data outliers lying outside the main distribution whiskers.
+
+#### 3. Categorical Enumeration and Aggregated Benchmarking
+* **Nominal Frequency Counting:** Constructed categorical enumeration counts using `sns.countplot()` to break down and visualize student volume distributions across individual departments and placement outcomes.
+* **Aggregated Multivariate Comparisons:** Coupled Pandas grouping mechanics (`.groupby().mean().reset_index()`) directly inside `sns.barplot()` engines to visualize categorical-to-numerical comparison bars tracking average performance levels across departments.
+* **Proportional Slice Allocation:** Programmed proportional distribution slices using Pandas `.plot(kind="pie")` combined with dynamic floating-point string formatters (`autopct="%1.1f%%"`) to capture exact percentage splits of categorical groups.
+
+#### 4. Relational Intersections, Matrix Mapping, and Cumulative Trends
+* **Chronological Trend Line Charts:** Rendered multidimensional continuous movement coordinates across academic terms by tracing indices using custom marker attributes, grid structural backdrops (`plt.grid(True)`), and customized tick distributions.
+* **Violin Distribution Comparisons:** Utilized `sns.violinplot()` to blend summary boxplot metrics with full probability distribution curves across different groups, contrasting continuous range dispersion constraints across separate academic streams.
+* **Multi-Variable Scatter Intersections:** Formulated spatial point intersections with `sns.scatterplot()`, assigning color-coded hue distributions to map multi-conditional placement vectors across performance and behavioral variables.
+* **Pair Plots (Multi-Numerical Grids):** Deployed Seaborn pair plotting engines to generate an all-on-all matrix grid, displaying pairwise scatter correlations across all numerical attributes (CGPA, Attendance, Study Hours, Family Income) along with matching diagonal distribution histograms.
+* **Statistical Correlation Heatmaps:** Parsed independent continuous parameters using numeric filter arrays (`df.select_dtypes(include="number").corr()`) to isolate statistical direction coefficients (ranging from perfect -1 to +1 bounds), mapping linear relationships onto a matrix using `sns.heatmap(annot=True, cmap="coolwarm")`.
+* **Shaded Area Charts:** Built an aggregate cumulative trend website visual by combining a standard trend line with `plt.fill_between()`. Utilized the transparency parameter `alpha=0.5` to shade the area under the semester-wise performance curve cleanly, preventing the fill from turning opaque.
+
+---
