@@ -146,3 +146,4 @@ The session was dedicated to exploring data visualization fundamentals using Mat
 * **Shaded Area Charts:** Built an aggregate cumulative trend website visual by combining a standard trend line with `plt.fill_between()`. Utilized the transparency parameter `alpha=0.5` to shade the area under the semester-wise performance curve cleanly, preventing the fill from turning opaque.
 
 ---
+[Next: Week 2 Logs →](./WEEK_02.md)
