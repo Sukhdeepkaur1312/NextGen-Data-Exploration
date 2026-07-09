@@ -57,3 +57,48 @@ The session initiated the Week 2 curriculum by focusing on advanced preprocessin
 * **Healthcare:** Simplifies hundreds of patient medical measurements before passing them to disease diagnostic models.
 * **Finance:** Redacts dozens of financial risk indicators down to essential indices for rapid credit analysis.
 * **Recommendation Systems:** Compresses user preference parameters to make matching algorithms compute faster.
+
+---
+## Day 3: Handling Imbalanced Datasets
+**Date:** 9 July 2026
+
+### Core Concepts Covered
+
+#### 1. The Class Imbalance Problem
+* Class imbalance occurs when one target category drastically outnumbers the other. In our dataset, `Placement_Status` was imbalanced with **317 Not Placed** vs. **173 Placed** profiles.
+* Standard Machine Learning models become biased toward the dominant class and treat the minority class as noise, leading to misleadingly high accuracy but terrible real-world performance.
+* **Original Training Split Count:** `0 (Not Placed): 254`, `1 (Placed): 138`.
+
+---
+
+### Resampling Techniques Implemented
+
+#### Method 1: Random Oversampling (ROS)
+* **How it works:** Randomly duplicates existing examples from the minority class until the distribution matches the majority class.
+* **Code:** `RandomOverSampler(random_state=42)`
+* **Balanced Result Count:** `0: 254, 1: 254`
+
+#### Method 2: Random Undersampling (RUS)
+* **How it works:** Randomly deletes examples from the majority class to match the minority class volume. While it speeds up training times, it risks discarding valuable data patterns.
+* **Code:** `RandomUnderSampler(random_state=42)`
+* **Balanced Result Count:** `0: 138, 1: 138`
+
+#### Method 3: SMOTE (Synthetic Minority Over-sampling Technique)
+* **How it works:** Avoids overfitting by creating entirely new, realistic synthetic data points. It calculates distances between existing minority class neighbors and interpolates new points along those connecting lines.
+* **Code:** `SMOTE(random_state=42)`
+* **Balanced Result Count:** `0: 254, 1: 254`
+
+#### Method 4: Tomek Links
+* **How it works:** A data-cleaning method that identifies pairs of opposite-class data points that are their own nearest neighbors (Tomek Links) and removes the majority class point. This creates a much clearer, wider separation border between classes.
+* **Code:** `TomekLinks()`
+* **Balanced Result Count:** `0: 198, 1: 138`
+
+#### Method 5: ADASYN (Adaptive Synthetic Sampling)
+* **How it works:** Similar to SMOTE, but focuses adaptively on the "harder-to-learn" minority examples (those near the decision boundary surrounded by the majority class), shifting the decision boundary to better protect difficult data positions.
+* **Code:** `ADASYN(random_state=42)`
+* **Balanced Result Count:** `0: 254, 1: 266`
+
+#### Method 6: SMOTETomek
+* **How it works:** A hybrid technique that applies SMOTE first to create new minority points, then immediately applies Tomek Links to clean up noisy or overlapping boundary points, giving you the benefit of both synthesis and cleaning.
+* **Code:** `SMOTETomek(random_state=42)`
+* **Balanced Result Count:** `0: 192, 1: 192`
