@@ -102,3 +102,49 @@ The session initiated the Week 2 curriculum by focusing on advanced preprocessin
 * **How it works:** A hybrid technique that applies SMOTE first to create new minority points, then immediately applies Tomek Links to clean up noisy or overlapping boundary points, giving you the benefit of both synthesis and cleaning.
 * **Code:** `SMOTETomek(random_state=42)`
 * **Balanced Result Count:** `0: 192, 1: 192`
+
+---
+## Day 4: Introduction to Supervised Machine Learning & Diagnostic Metrics
+**Date:** 10 July 2026
+
+### Core Concepts Covered
+
+#### 1. Introduction to Supervised Machine Learning
+* **Supervised Learning:** A core machine learning setup where a predictive algorithm trains on labeled data, meaning the matrix includes both descriptive features ($X$) and ground-truth target outputs ($y$).
+* **Classification Tasks:** Focuses on predicting categorical outcomes (e.g., classifying whether a student will be `Placed (1)` or `Not Placed (0)` using metrics like CGPA, Attendance, and Technical Skills).
+
+#### 2. Pattern Identification & Data Clustering Clues
+* Evaluated data coordinates to isolate cluster signatures between feature sets.
+* Observed how clean data isolates clear boundaries (e.g., high CGPA + high Attendance correlates tightly to placement success), allowing classification lines to divide student outcomes accurately.
+
+#### 3. Anomaly and Misclassification Detection
+* **Outlier Distortions:** Evaluated how data points violating standard patterns (e.g., low-performing records showing high placement status) act as anomalies or noise that force errors in model boundaries.
+* **The Confusion Matrix:** Formulated a structured evaluation table to cross-examine actual vs. predicted labels, making it simple to spot exactly where the model's pattern identification fails:
+
+* **True Positive (TP):** Model correctly predicted a student *would* be placed.
+* **True Negative (TN):** Model correctly predicted a student *would not* be placed.
+* **False Positive (FP) [Type I Error]:** Model flagged a student as placed when they actually failed to place (Pattern Identification Error).
+* **False Negative (FN) [Type II Error]:** Model flagged a student as not placed when they actually succeeded (Critical Anomaly Error).
+
+
+
+#### 4. Model Evaluation Metrics Formulated
+* **Accuracy:** The overall percentage of correct predictions.
+  $$\text{Accuracy} = \frac{\text{TP} + \text{TN}}{\text{TP} + \text{TN} + \text{FP} + \text{FN}}$$
+* **Precision:** Measures how reliable the positive predictions are. Crucial when a False Positive introduces high costs.
+  $$\text{Precision} = \frac{\text{TP}}{\text{TP} + \text{FP}}$$
+* **Recall (Sensitivity):** Measures the ability to catch all actual positive cases. Crucial when missing a pattern (False Negative) is highly critical.
+  $$\text{Recall} = \frac{\text{TP}}{\text{TP} + \text{FN}}$$
+* **F1-Score:** The balanced harmonic mean of Precision and Recall, providing a reliable metric when working with imbalanced validation distributions.
+  $$\text{F1-Score} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}$$
+
+#### 5. Code Implementation
+* Deployed `scikit-learn` to print data evaluation summaries:
+  ```python
+  from sklearn.metrics import classification_report, confusion_matrix
+  
+  # Auditing prediction errors
+  print(confusion_matrix(y_true, y_pred))
+  print(classification_report(y_true, y_pred))
+
+---
