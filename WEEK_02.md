@@ -148,3 +148,32 @@ The session initiated the Week 2 curriculum by focusing on advanced preprocessin
   print(classification_report(y_true, y_pred))
 
 ---
+## Day 5: Advanced Automated EDA & Interactive Visualization Tools
+**Date:** 14 July 2026
+
+### Core Tools Covered
+
+#### 1. ydata-profiling (formerly Pandas Profiling)
+* **What it does:** Generates comprehensive, single-page interactive HTML data reports directly from a pandas DataFrame, automating the tedious process of manual variable inspection and statistical verification.
+* **Key Features:**
+  * **Type Inference:** Automatically detects whether column types are numeric, categorical, boolean, date, or text without manual intervention.
+  * **Warning Alerts Engine:** Flags critical dataset issues automatically, including missing values, high correlation (>0.9), highly skewed distributions, constant values, and exact duplicate rows.
+  * **Statistical Overviews:** Provides quantile statistics (minimum, 25th percentile, median, 75th percentile, maximum, IQR) and descriptive statistics (mean, standard deviation, variance, kurtosis).
+  * **Deep Correlation Matrix Analyses:** Calculates multiple correlation coefficients under the hood (Pearson, Spearman, Kendall, and Phik $\phi_k$) to reveal both linear and non-linear relationships.
+
+#### 2. Sweetviz
+* **What it does:** An open-source Python library that renders high-density, beautifully styled interactive visualizations specifically optimized for quick target analysis and dataset comparisons.
+* **Key Features:**
+  * **Dataset Comparison (Train vs. Test):** Seamlessly visualizes distribution shifts, ensuring that your training and testing sets share the same statistical properties before training ML models.
+  * **Target Variable Association:** Isolates a target column (e.g., *Placed* vs. *Not Placed*) and visually plots how every other feature correlates with and impacts that specific target.
+  * **Sleek UI Design:** Renders a clean, two-column layout with intuitive color coding (e.g., blue for the train set, orange for the test set) which makes spotting data gaps or classification imbalances visually instant.
+
+#### 3. D-Tale
+* **What it does:** Integrates a fully interactive, Excel-like grid GUI directly within your Jupyter or Colab notebook interface, bridging the gap between raw pandas commands and spreadsheet ease.
+* **Key Features:**
+  * **Dynamic Visualizations:** Includes built-in charting capabilities (scatter plots, 3D charts, heatmaps, bar charts) that update instantly as you select variables from the GUI.
+  * **Interactive Operations:** Allows you to filter, sort, group, and transpose your active DataFrame on the fly via a sidebar menu without typing pandas code.
+  * **Interactive Outlier and Missing Value Detection:** Highlights anomalous data points using custom color gradients and generates immediate clean-up options (like dropping or replacing outliers).
+  * **Code Exporting:** One of its most powerful features—every time you perform an action in the GUI (like filtering or encoding), D-Tale displays the exact python code block required to replicate that transformation programmatically.
+
+---
