@@ -149,7 +149,7 @@ The session initiated the Week 2 curriculum by focusing on advanced preprocessin
 
 ---
 ## Day 5: Advanced Automated EDA & Interactive Visualization Tools
-**Date:** 14 July 2026
+**Date:** 13 July 2026
 
 ### Core Tools Covered
 
