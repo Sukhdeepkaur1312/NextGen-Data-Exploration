@@ -177,4 +177,4 @@ The session initiated the Week 2 curriculum by focusing on advanced preprocessin
   * **Code Exporting:** One of its most powerful features—every time you perform an action in the GUI (like filtering or encoding), D-Tale displays the exact python code block required to replicate that transformation programmatically.
 
 ---
-Next: Week 3 Logs →](./WEEK_03.md)
+[Next: Week 3 Logs →](./WEEK_03.md)
