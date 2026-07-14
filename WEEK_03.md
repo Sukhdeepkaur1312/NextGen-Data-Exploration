@@ -1,4 +1,4 @@
-# Week 3
+# Week 3 Daily Training Journal
 
 ## Day 1: Introduction to Supervised Learning & Logistic Regression
 **Date:** 14 July 2026
