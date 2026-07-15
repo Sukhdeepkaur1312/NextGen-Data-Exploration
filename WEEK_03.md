@@ -31,3 +31,24 @@ Depending on the nature of the target variable, supervised tasks are divided int
   * **House Price Prediction:** Estimating exact market values based on physical inputs like square footage, age, and bedroom counts.
 
 ---
+## Day 2: Classification Paradigms-(KNN, SVM, & Naïve Bayes)
+**Date:** 15 July 2026
+
+### Core Classification Methods Compared
+
+#### 1. Naïve Bayes
+* **Core Logic:** Operates on the principles of probabilistic inference utilizing Bayes' Theorem. It assumes strict conditional independence between every input feature relative to the class variable.
+* **Performance Profile:** Extremely fast training phases with fast real-time inference predictions. It requires no feature scaling and shows moderate structural sensitivity to dataset noise.
+* **Best Fit:** Excels at handling textual information, filtering spam folders, and running clinical medical diagnosis models.
+
+#### 2. K-Nearest Neighbors (KNN)
+* **Core Logic:** A non-parametric "lazy learner" that shifts computational weight entirely to the prediction phase. It determines the category of an unseen data point by finding the closest matching labeled data cluster points based on geometric distance metrics.
+* **Performance Profile:** Virtually zero initialization or training speed latency, though prediction phases are slow due to step-by-step neighbor distance lookups. Requires strict feature scaling and is highly sensitive to outlier noise.
+* **Best Fit:** Ideal for smaller, well-structured datasets and deploying product recommendation systems.
+
+#### 3. Support Vector Machines (SVM)
+* **Core Logic:** Focuses on boundary optimization by finding an optimal separating hyperplane that maximizes the geometric margin between data classes.
+* **Performance Profile:** Moderate training speeds with fast real-time prediction performance. Requires precise input feature scaling and displays moderate resilience against noise.
+* **Best Fit:** Performs exceptionally well across high-dimensional target spaces, image classifications, and facial recognition tasks.
+
+---
