@@ -52,3 +52,43 @@ Depending on the nature of the target variable, supervised tasks are divided int
 * **Best Fit:** Performs exceptionally well across high-dimensional target spaces, image classifications, and facial recognition tasks.
 
 ---
+## Week 3, Day 3: Project Progress Presentation
+**Date:** 16 July 2026
+
+### Project Milestone: Concept Showcase & Progress Review
+
+Today, we presented the mid-term progress and architectural framework of our capstone project to the review panel. 
+
+#### Project Title: 
+`Bug-Fixer: Automated Bug Localization and Fix Recommendation for C/C++`
+
+#### 1. Project Objective & Core Aim
+Debugging compiled languages like C and C++ is notoriously time-consuming due to cryptic compiler errors, manual stack-trace parsing, and memory management complexities. The core goal of **Bug-Fixer** is to build an intelligent, end-to-end assistant that automates software debugging. The application streamlines the debugging pipeline into an intuitive web interface, allowing programmers to instantly validate, locate, and fix syntactic or logical flaws in their source code.
+
+---
+
+#### 2. System Architecture & Workflow Pipeline
+The application leverages an advanced AI backend coupled with a responsive frontend to handle source files through three consecutive, automated stages:
+
+* **Stage 1: Binary Defect Classification (AI Inference Backend)**
+  * The user uploads raw `.c` or `.cpp` source files directly into the portal.
+  * An underlying Artificial Intelligence model parses the abstract structure of the code to run a binary prediction, determining whether the script is structurally sound or contains a software bug.
+
+* **Stage 2: Contextual Localization & Explanation Generation**
+  * If the classifier flags the code as buggy, the pipeline passes the source code to a localization engine.
+  * The system highlights the most probable lines or blocks causing the execution error and automatically generates a human-readable explanation outlining *why* the bug exists (e.g., memory leaks, array out-of-bounds access, pointer misalignment).
+
+* **Stage 3: Automated Fix Recommendation**
+  * Alongside the diagnostic report, the engine generates an optimized, corrected patch file or snippet showing the exact changes required to resolve the issue.
+
+---
+
+#### 3. Frontend Deployment Interface
+* To bring this automated pipeline into an accessible environment for everyday developer workflows, the entire system is being deployed using the **Streamlit** web framework. 
+* The dashboard features a simple file-uploader utility, asynchronous parsing indicators, side-by-side split visual diffs comparing the broken input code against the recommended patch, and clear error logs.
+
+### Next Steps & Upcoming Sprint
+* Finalize training and fine-tuning datasets containing paired buggy/clean C and C++ source examples.
+* Complete the structural integration between the AI classification backend script and the interactive Streamlit user interface components.
+
+---
