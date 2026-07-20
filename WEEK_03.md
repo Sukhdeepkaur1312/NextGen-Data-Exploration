@@ -52,7 +52,7 @@ Depending on the nature of the target variable, supervised tasks are divided int
 * **Best Fit:** Performs exceptionally well across high-dimensional target spaces, image classifications, and facial recognition tasks.
 
 ---
-## Week 3, Day 3: Project Progress Presentation
+## Day 3: Project Progress Presentation
 **Date:** 16 July 2026
 
 ### Project Milestone: Concept Showcase & Progress Review
@@ -60,35 +60,86 @@ Depending on the nature of the target variable, supervised tasks are divided int
 Today, we presented the mid-term progress and architectural framework of our capstone project to the review panel. 
 
 #### Project Title: 
-`Bug-Fixer: Automated Bug Localization and Fix Recommendation for C/C++`
+`NewsPulse: AI-Powered News Categorization & Summarization`
 
 #### 1. Project Objective & Core Aim
-Debugging compiled languages like C and C++ is notoriously time-consuming due to cryptic compiler errors, manual stack-trace parsing, and memory management complexities. The core goal of **Bug-Fixer** is to build an intelligent, end-to-end assistant that automates software debugging. The application streamlines the debugging pipeline into an intuitive web interface, allowing programmers to instantly validate, locate, and fix syntactic or logical flaws in their source code.
+With the massive influx of digital media, consuming news efficiently is challenging due to information overload and uncategorized content. The core goal of this project is to develop an automated pipeline that processes raw text articles, classifies them into specific news categories, and provides a concise summary. The entire ecosystem is deployed as an interactive web dashboard to streamline how users digest news.
 
 ---
 
 #### 2. System Architecture & Workflow Pipeline
-The application leverages an advanced AI backend coupled with a responsive frontend to handle source files through three consecutive, automated stages:
+The application leverages a modular machine learning and NLP backend connected to a responsive frontend. The data flow operates through the following stages:
+## Day 4: Tree-Based Models (Decision Trees & Random Forests)
+**Date:** 20 July 2026
 
-* **Stage 1: Binary Defect Classification (AI Inference Backend)**
-  * The user uploads raw `.c` or `.cpp` source files directly into the portal.
-  * An underlying Artificial Intelligence model parses the abstract structure of the code to run a binary prediction, determining whether the script is structurally sound or contains a software bug.
+### 1. Core Concepts & Theoretical Foundations
 
-* **Stage 2: Contextual Localization & Explanation Generation**
-  * If the classifier flags the code as buggy, the pipeline passes the source code to a localization engine.
-  * The system highlights the most probable lines or blocks causing the execution error and automatically generates a human-readable explanation outlining *why* the bug exists (e.g., memory leaks, array out-of-bounds access, pointer misalignment).
+Today’s session focused on tree-based architectures, moving from single flowchart-like classifiers to ensemble methods.
 
-* **Stage 3: Automated Fix Recommendation**
-  * Alongside the diagnostic report, the engine generates an optimized, corrected patch file or snippet showing the exact changes required to resolve the issue.
+#### Decision Trees
+*   **Core Logic:** A supervised learning algorithm that splits a dataset into smaller subsets using conditional "if-then-else" logic to predict categories or numerical values.
+*   **Splitting Criteria:**
+    *   **Gini Impurity / Index:** Measures the probability of a random data point being misclassified (fast to compute; a Gini score of $0$ means a node is perfectly pure).
+    *   **Entropy:** Measures the structural randomness or disorder within a node.
+    *   **Information Gain:** Calculates the exact drop in entropy after a split; the algorithm naturally selects the feature yielding the highest information gain.
+*   **Trade-offs:** Highly interpretable, requires minimal preprocessing, and handles mixed data types easily. However, it is prone to overfitting and highly sensitive to minor structural variations in the training data.
+
+#### Random Forests
+*   **Core Logic:** An ensemble method that constructs a collection of multiple decision trees to generate more stable and accurate predictions based on the "wisdom of the crowd" principle.
+*   **Trade-offs:** Drastically reduces overfitting and remains robust against noise or missing data. The downside is increased memory consumption, slower execution speeds, and diminished interpretability compared to a single tree.
 
 ---
 
-#### 3. Frontend Deployment Interface
-* To bring this automated pipeline into an accessible environment for everyday developer workflows, the entire system is being deployed using the **Streamlit** web framework. 
-* The dashboard features a simple file-uploader utility, asynchronous parsing indicators, side-by-side split visual diffs comparing the broken input code against the recommended patch, and clear error logs.
+### 2. Practical Implementation Walkthrough (`Day 12.ipynb`)
 
-### Next Steps & Upcoming Sprint
-* Finalize training and fine-tuning datasets containing paired buggy/clean C and C++ source examples.
-* Complete the structural integration between the AI classification backend script and the interactive Streamlit user interface components.
+We applied both paradigms to predict depression labels using a teen mental health dataset.
+
+#### Data Preparation & Features
+*   **Dataset:** `Teen_Mental_Health_Dataset.csv`
+*   **Target Variable ($y$):** `depression_label` (Classes: *Not Depressed*, *Depressed*)
+*   **Input Features ($X$):** `daily_social_media_hours`, `sleep_hours`, `academic_performance`, `stress_level`, `anxiety_level`, and `addiction_level`.
+*   **Data Split:** $80\%$ Training, $20\%$ Testing (stratified split based on $y$, `random_state=42`).
+
+#### Model 1: Decision Tree Classifier
+*   **Configuration:** `DecisionTreeClassifier(criterion='gini', max_depth=4, random_state=42)`
+*   **Performance:** Achieved an accuracy score of **100%** on the test set. 
+*   **Visualized Tree Rules:**
+    *   **Root Split:** Determined primarily by `stress_level <= 6.5`.
+    *   **Subsequent Split Features:** Level 2 and 3 nodes branched based on conditional checks against `sleep_hours <= 5.85`, `anxiety_level <= 6.5`, and `daily_social_media_hours <= 4.85`.
+
+#### Model 2: Random Forest Classifier (Ensemble)
+*   **Configuration:** `RandomForestClassifier(n_estimators=100, max_depth=5, random_state=42)`
+*   **Performance:** Achieved a generalized accuracy score of **97.92%** on the test partition.
+
+---
+## Day 4: Continuous Modeling & Regularization (Linear, Ridge, & Lasso Regression)
+**Date:** 20 July 2026
+
+### Core Concepts Covered
+
+#### 1. What is Continuous Regularized Modeling?
+* Continuous modeling is a subfield of supervised learning where a model is trained to predict a continuous numerical value rather than a discrete category.
+* **The Regularization Extension:** When training models on data with many input features, standard algorithms can become over-sensitive to noise, leading to overfitting. Regularization introduces a mathematical penalty to the model's loss function to shrink large coefficients, keeping the model stable and generalizable.
+* **The Analogy:** Imagine a student preparing for an exam who tries to memorize every tiny, irrelevant detail in the textbook word-for-word, causing them to perform poorly on real, unseen exam questions due to lack of conceptual flexibility. Regularization acts like a strict study guide that penalizes rote memorization, forcing the student to focus only on the core, most impactful concepts.
+
+---
+
+#### 2. Three Algorithmic Approaches to Continuous Regression
+Depending on how feature weights are managed and penalized, continuous regression tasks are divided into three core architectures:
+
+##### Approach A: Linear Regression (Unpenalized Baseline)
+* **Definition:** A fundamental regression algorithm that models the relationship between input features ($X$) and a continuous target variable ($y$) by fitting a best-fit straight line.
+* **Characteristics:** Uses all available features unconditionally, applies no penalty to coefficient magnitudes, and can easily overfit if many irrelevant features exist.
+* **Practical Applications:** Estimating real-world continuous values such as house prices, expected salary packages, marks, or temperature trajectories.
+
+##### Approach B: Ridge Regression ($L_2$ Regularization)
+* **Definition:** An extension of linear regression that adds an $L_2$ penalty (the squared magnitude of coefficients) to the cost function to control model complexity.
+* **Characteristics:** It shrinks the coefficients of less important features down close to zero, but retains every feature in the final model equations.
+* **Practical Advantage:** Drastically reduces overfitting and remains highly robust when features suffer from strong multicollinearity (high correlation with each other).
+
+##### Approach C: Lasso Regression ($L_1$ Regularization)
+* **Definition:** An extension of linear regression that adds an $L_1$ penalty (the absolute magnitude of coefficients) to the cost function.
+* **Characteristics:** It actively forces the coefficients of completely non-essential or highly redundant features down to exactly zero.
+* **Practical Advantage:** Performs automated feature selection, yielding simpler, sparser, and much more interpretable models by completely removing unnecessary variables from the prediction path.
 
 ---
