@@ -1,4 +1,6 @@
-## Week 3, Day 5: Feature Selection Techniques & Filter Methods
+# Week 4 Daily Training Journal
+
+## Day 1: Feature Selection Techniques & Filter Methods
 **Date:** 21 July 2026
 
 ### Core Concepts Covered
