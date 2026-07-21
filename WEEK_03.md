@@ -197,3 +197,4 @@ Depending on how feature weights are managed and penalized, continuous regressio
 * **Practical Advantage:** Identifies highly discriminative continuous features for classification tasks.
 
 ---
+[Next: Week 4 Logs →](./WEEK_04.md)
