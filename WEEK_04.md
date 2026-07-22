@@ -54,3 +54,37 @@
 * **Practical Advantage:** Identifies highly discriminative continuous features for classification tasks.
 
 ---
+## Day 2: Feature Selection – Wrapper Methods
+**Date:** 22 July 2026
+
+### Core Concepts Covered
+
+#### 1. What are Wrapper Methods?
+* **Definition:** A Wrapper Method is a feature selection technique in which a machine learning algorithm is used to evaluate different subsets of features and select the combination that yields the best model performance.
+* **Core Difference from Filter Methods:** Unlike Filter Methods (which rank features based purely on statistical scores independent of model architecture), Wrapper Methods train the actual machine learning model repeatedly on various feature combinations to find the optimal subset.
+
+---
+
+#### 2. Four Key Wrapper Method Search Strategies
+
+##### Method 1: Forward Selection (Sequential Feature Selection)
+* **Definition:** An iterative feature selection approach that starts with an empty set of features and adds variables one by one based on model performance gains.
+* **Core Logic:** Starts with zero features. At each step, it evaluates every remaining feature, adds the one that provides the highest increase in model accuracy, and stops when adding more features no longer improves performance.
+* **Practical Advantage:** Computationally efficient when the optimal subset size is small.
+
+##### Method 2: Backward Elimination (Sequential Feature Elimination)
+* **Definition:** An iterative feature selection approach that starts with all available features and systematically removes the least impactful variables one by one.
+* **Core Logic:** Starts with all features included in the dataset. At each step, it evaluates model performance and permanently removes the feature whose removal causes the least reduction (or an improvement) in accuracy.
+* **Practical Advantage:** Effective at catching complex feature interactions since it starts with the full feature space.
+
+##### Method 3: Recursive Feature Elimination (RFE)
+* **Definition:** A model-driven wrapper method that uses model coefficient weights or feature importances to recursively eliminate unimportant variables.
+* **Core Logic:** Fits the model on all features, ranks features by importance, discards the least important features, and retrains the model on the remaining subset until the target number of features ($k$) is reached.
+* **Practical Advantage:** Highly popular and effective for models that produce internal feature importances or weight coefficients (e.g., Linear/Logistic Regression, Decision Trees).
+
+##### Method 4: Recursive Feature Elimination with Cross-Validation (RFECV)
+* **Definition:** An advanced variant of RFE that combines recursive feature elimination with cross-validation to automatically determine the optimal number of features.
+* **Core Logic:** Automatically finds the best feature subset without requiring the user to hardcode a target number of features ($k$).
+* **Practical Advantage:** Eliminates guesswork by utilizing cross-validation scores to find the exact feature subset size that optimizes generalization.
+
+---
