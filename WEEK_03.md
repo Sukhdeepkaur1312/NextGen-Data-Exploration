@@ -69,6 +69,8 @@ With the massive influx of digital media, consuming news efficiently is challeng
 
 #### 2. System Architecture & Workflow Pipeline
 The application leverages a modular machine learning and NLP backend connected to a responsive frontend. The data flow operates through the following stages:
+
+---
 ## Day 4: Tree-Based Models (Decision Trees & Random Forests)
 **Date:** 20 July 2026
 
