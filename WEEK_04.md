@@ -88,3 +88,55 @@
 * **Practical Advantage:** Eliminates guesswork by utilizing cross-validation scores to find the exact feature subset size that optimizes generalization.
 
 ---
+## Day 3: Hyperparameter Tuning & Grid Search
+**Date:** 23 July 2026
+
+### Core Concepts Covered
+
+#### 1. What is Hyperparameter Tuning?
+* **Definition:** Hyperparameter tuning is the process of finding the optimal combination of model configuration settings prior to training to maximize predictive performance.
+* **Parameters vs. Hyperparameters:**
+  * **Parameters:** Learned automatically during training by the model (e.g., weights, bias). Cannot be manually set.
+  * **Hyperparameters:** Configured manually by the user *before* training begins (e.g., `max_depth`, `n_estimators`, `learning_rate`).
+
+---
+
+#### 2. Key Model Hyperparameters
+
+##### Decision Tree
+* **`max_depth`:** Maximum depth of the tree to prevent overfitting.
+* **`min_samples_split`:** Minimum number of samples required to split an internal node.
+* **`min_samples_leaf`:** Minimum number of samples required at a leaf node.
+* **`criterion`:** Function to measure split quality (`gini` or `entropy`).
+
+##### Random Forest
+* **`n_estimators`:** Total number of decision trees in the ensemble.
+* **`max_depth`:** Maximum depth allowed for individual trees.
+* **`max_features`:** Number of features to consider when looking for the best split.
+* **`min_samples_leaf`:** Minimum number of samples required at a leaf node.
+
+##### K-Nearest Neighbors (KNN)
+* **`n_neighbors`:** Number of nearest neighbors to consider for prediction.
+* **`metric`:** Distance metric used (`minkowski`, `euclidean`, `manhattan`).
+* **`weights`:** Weight function used in prediction (`uniform` or `distance`).
+
+##### Support Vector Machine (SVM)
+* **`C`:** Regularization parameter controlling trade-off between decision boundary smoothness and correct classification.
+* **`kernel`:** Kernel type (`linear`, `rbf`, `poly`).
+* **`gamma`:** Kernel coefficient defining the reach of a single training instance.
+
+---
+
+#### 3. Tuning Techniques
+
+##### Method 1: Grid Search (`GridSearchCV`)
+* **Definition:** An exhaustive search method that evaluates all possible combinations across a specified hyperparameter grid using cross-validation.
+* **Core Logic:** Constructs a full grid of candidate values and systematically fits the model on every single combination to find the exact optimal setup.
+* **Practical Advantage:** Guaranteed to find the best combination within the specified parameter grid.
+
+##### Method 2: Randomized Search (`RandomizedSearchCV`)
+* **Definition:** A search approach that samples a fixed number of parameter combinations randomly from specified distributions.
+* **Core Logic:** Instead of testing every possible combination, it randomly samples configurations to efficiently explore high-dimensional search spaces.
+* **Practical Advantage:** Significantly faster than Grid Search while yielding comparable performance improvements.
+
+---
