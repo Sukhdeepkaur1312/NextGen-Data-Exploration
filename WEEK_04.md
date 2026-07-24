@@ -200,3 +200,4 @@
 * **Environment & Config:** Virtual Environment (`.venv`), `requirements.txt`, `config.toml`.
 
 ---
+[Main Portfolio / README](README.md)
