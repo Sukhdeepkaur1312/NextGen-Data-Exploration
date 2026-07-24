@@ -141,7 +141,7 @@
 
 ---
 ## Day 4: ML Pipelines & Model Interpretability
-**Date:** 23 July 2026
+**Date:** 24 July 2026
 
 ### Core Concepts Covered
 
@@ -173,7 +173,7 @@
 
 ---
 ## Day 5: End-to-End NLP Application Deployment & Project Review
-**Date:** 24 July 2026
+**Date:** 27 July 2026
 
 #### 1. End-to-End NLP Project Architecture
 * **Definition:** Building a production-ready Natural Language Processing (NLP) web application that integrates dataset cleaning, text vectorization, machine learning classification, automated summarization, and a web interface into a unified system.
