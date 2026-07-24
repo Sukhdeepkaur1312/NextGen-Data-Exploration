@@ -72,7 +72,7 @@ The application leverages a modular machine learning and NLP backend connected t
 
 ---
 ## Day 4: Tree-Based Models (Decision Trees & Random Forests)
-**Date:** 20 July 2026
+**Date:** 17 July 2026
 
 ### 1. Core Concepts & Theoretical Foundations
 
