@@ -140,3 +140,63 @@
 * **Practical Advantage:** Significantly faster than Grid Search while yielding comparable performance improvements.
 
 ---
+## Day 4: ML Pipelines & Model Interpretability
+**Date:** 23 July 2026
+
+### Core Concepts Covered
+
+#### 1. What is an ML Pipeline?
+* **Definition:** An ML Pipeline is an end-to-end automated framework that chains together data preprocessing, feature engineering, feature selection, and model estimation into a single unified workflow.
+* **Why Use Pipelines?**
+  * **Prevents Data Leakage:** Ensures preprocessing transformations (like scaling or encoding) are fitted *only* on training folds during cross-validation, keeping test/validation data completely unseen.
+  * **Reproducibility & Clean Code:** Replaces fragmented code blocks with a clean, single `.fit()` and `.predict()` pipeline call.
+  * **Seamless Deployment:** Allows the exact sequence of data transformations to be saved and applied directly to new, incoming production data.
+
+---
+
+#### 2. What is Model Interpretability?
+* **Definition:** Model interpretability refers to the methods and techniques used to explain *how* and *why* a machine learning model makes specific predictions.
+* **The Transparency Trade-off:** Simple models (like Linear Regression or Decision Trees) are naturally interpretable but may lack complex predictive power. Complex black-box models (like Random Forests or Gradient Boosted Trees) offer high accuracy but require post-hoc interpretability tools to explain their internal decision boundaries.
+
+---
+
+#### 3. Key Model Interpretability Techniques
+
+##### Approach A: Global Interpretability (Understanding Overall Model Behavior)
+* **Feature Importances:** Measures how much each feature contributes to reducing impurity across all decision trees in an ensemble.
+* **Permutation Feature Importance:** Evaluates feature importance by measuring the decrease in model score after randomly shuffling a specific feature's values.
+* **Partial Dependence Plots (PDP):** Shows the marginal effect that one or two features have on the predicted outcome of a model.
+
+##### Approach B: Local Interpretability (Explaining Individual Predictions)
+* **SHAP (SHapley Additive exPlanations):** Grounded in game theory, SHAP computes the marginal contribution of each feature to break down individual predictions into positive or negative pushes relative to the baseline average prediction.
+* **LIME (Local Interpretable Model-agnostic Explanations):** Explains individual predictions by fitting a simple, interpretable surrogate model (like a linear model) around the local neighborhood of the target prediction instance.
+
+---
+## Day 5: End-to-End NLP Application Deployment & Project Review
+**Date:** 24 July 2026
+
+#### 1. End-to-End NLP Project Architecture
+* **Definition:** Building a production-ready Natural Language Processing (NLP) web application that integrates dataset cleaning, text vectorization, machine learning classification, automated summarization, and a web interface into a unified system.
+* **Core Workflow Components:**
+  * **Data Pipeline (`data_prep.py`):** Ingests raw JSON data (`News_Category_Dataset_v3.json`) and exports preprocessed datasets (`clean.csv`).
+  * **Model Training (`train_classifier.py`):** Trains text classification models using TF-IDF vectorization and saves serialized artifacts (`classifier.joblib`, `logreg_classifier.joblib`, `tfidf_vectorizer.joblib`) into a dedicated `models/` directory.
+  * **Inference Engine (`predict.py`, `summarizer.py`):** Handles incoming raw text input, performs TF-IDF transformation to predict news categories, and applies text-ranking algorithms to extract concise article summaries.
+  * **Web Application (`server.py`):** Serves the model predictions and generated summaries via a Flask web application and a responsive frontend interface (`templates/index.html`).
+
+---
+
+#### 2. Project Features & Applied Tech Stack
+
+##### Application Features ("NewsPulse AI")
+* **Automated News Categorization:** Predicts top matching news categories (e.g., *WORLD NEWS*, *WELLNESS*, *ENTERTAINMENT*, *BUSINESS*, *POLITICS*).
+* **Extractive Text Summarization:** Automatically extracts the most representative key sentences from raw article text based on user-configured sentence counts.
+* **Local Inference & Privacy:** Performs all vectorization, classification, and summarization tasks locally on device without sending data to external APIs.
+
+##### Tech Stack Breakdown
+* **Language & Web Framework:** Python, Flask (
+* `server.py`).
+* **Machine Learning & NLP:** `scikit-learn` (TF-IDF Vectorizer + LogisticRegression).
+* **Text Summarization:** TextRank / Frequency-based Extractive Summarizer (`sumy`).
+* **Environment & Config:** Virtual Environment (`.venv`), `requirements.txt`, `config.toml`.
+
+---
